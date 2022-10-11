@@ -1,4 +1,7 @@
+import { Busquedas_Recientes_Controller } from "./controller/busquedas_recientes.controller";
 import { LoginController } from "./controller/login.controller";
+import { Sistema_Caracteristicas_Controller } from "./controller/sistema_caracteristicas.controller";
+import { Sistema_Usuarios_Controller } from "./controller/sistema_usuarios.controller";
 import { UsuarioController } from "./controller/usuario.controller";
 import { VideoConferenciaController } from "./controller/videoconferencia.controller";
 import { AppDataSource } from "./data-source"
@@ -22,17 +25,29 @@ AppDataSource.initialize().then(async () => {
     // Configuracion para subir imagenes
     app.use(fileUpload());
 
-    // Importamos las rutas
-    // var routes = require('./url/url');
-    // const inicio = require('./controllers/apis');
+    /** Importar ruta de los controladores: const var_controller = new Var_Controller(); */
+    /** guide:
+    var routes = require('./url/url');
+    const inicio = require('./controllers/apis');
     const user_controller = new UsuarioController();
     const login_controller = new LoginController();
     const videoconferencia_controller = new VideoConferenciaController();
+     */
 
-    // Cargamos las rutas
+    const usuario_controller = new Sistema_Usuarios_Controller();
+    const caracteristicas_controller = new Sistema_Caracteristicas_Controller();
+    const busq_rec_controller = new Busquedas_Recientes_Controller();
+
+    /**Cargar las rutas de las apis */
+    /** guide:
     app.use('/apis', user_controller.router);
     app.use('/apis', login_controller.router);
     app.use('/apis', videoconferencia_controller.router);
+     */
+
+    app.use('/apis', usuario_controller.router);
+    app.use('/apis', caracteristicas_controller.router);
+    app.use('/apis', busq_rec_controller.router);
     app.get('/apis', function (req, res) {
         console.log('sss');
 

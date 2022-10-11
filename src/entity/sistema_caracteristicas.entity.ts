@@ -5,7 +5,7 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, OneT
     id: number
 
     @Column()
-    sistema: string    
+    sistema: string
     
     @Column()
     siglas: string
@@ -20,10 +20,13 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, OneT
     lenguaje_programacion: string
 
     @Column()
+    soporte_tecnico: string
+
+    @Column()
     tipo: string
 
     @Column()
-    url: number
+    url: string
 
     @Column()
     servidor_aplicacion: string

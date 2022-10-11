@@ -8,12 +8,15 @@ export class Sistema_Caracteristicas_Controller {
 
     constructor() {
         this.router = Router()
+        this.routes();
     }
 
+    /**APIs */
+
     /**
-     * getSistema metodo para obetener todas las caracteristicas del sistema
+     * getSistema api para obetener todas las caracteristicas de cada sistema
      */
-    public getSistema = async (req: Request, res: Response) => {
+    public get_sistema = async (req: Request, res: Response) => {
         const result: any = await AppDataSource.manager.find(Sistema_Caracteristicas, {
             order: {
                 sistema: "ASC"
@@ -23,9 +26,9 @@ export class Sistema_Caracteristicas_Controller {
     }
 
     /**
-     * addSistema metodo para annadir un nuevo sistema
+     * addSistema api para annadir un nuevo sistema
      */
-    public addSistema = async (req: Request, res: Response) => {
+    public add_sistema = async (req: Request, res: Response) => {
         const sistema = req.body.nombre;
         const siglas = req.body.siglas;
         const descripcion = req.body.descripcion;
@@ -56,9 +59,9 @@ export class Sistema_Caracteristicas_Controller {
     }
 
     /**
-     * updateSistema metodo para atualizar los datos del sistema
+     * updateSistema api para atualizar los datos del sistema
      */
-    public updateSistema = async (req: Request, res: Response) => {
+    public update_sistema = async (req: Request, res: Response) => {
         const sistema = req.body.nombre;
         const siglas = req.body.siglas;
         const descripcion = req.body.descripcion;
@@ -87,5 +90,15 @@ export class Sistema_Caracteristicas_Controller {
         return res.status(200).send({ message: 'Datos del sistema actualizados correctamente' });
         //error
     }
+
+    /**
+     * routes url para las llamadas a las apis
+     */
+    public routes() {
+        this.router.get('/sistema-caracteristica', this.get_sistema);
+        this.router.post('/sistema-caracteristica', this.add_sistema);
+        this.router.put('/sistema-caracteristica',this.update_sistema);
+    }
+    
 }
 
