@@ -1,7 +1,9 @@
 import { LoginController } from "./controller/login.controller";
+import { Sistema_Caracteristicas_Controller } from "./controller/sistema_caracteristicas.controller";
 import { UsuarioController } from "./controller/usuario.controller";
 import { VideoConferenciaController } from "./controller/videoconferencia.controller";
 import { AppDataSource } from "./data-source"
+import { Sistema_Caracteristicas } from "./entity/sistema_caracteristicas.entity";
 
 const express = require('express')
 const bodyParser = require('body-parser');
@@ -28,11 +30,12 @@ AppDataSource.initialize().then(async () => {
     const user_controller = new UsuarioController();
     const login_controller = new LoginController();
     const videoconferencia_controller = new VideoConferenciaController();
+    const sistema_controller = new Sistema_Caracteristicas_Controller();
 
     // Cargamos las rutas
     app.use('/apis', user_controller.router);
     app.use('/apis', login_controller.router);
-    app.use('/apis', videoconferencia_controller.router);
+    app.use('/apis', sistema_controller.router);
     app.get('/apis', function (req, res) {
         console.log('sss');
 

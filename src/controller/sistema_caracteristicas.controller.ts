@@ -7,7 +7,8 @@ export class Sistema_Caracteristicas_Controller {
     public router: Router
 
     constructor() {
-        this.router = Router()
+        this.router = Router();
+        this.routes();
     }
 
     /**
@@ -86,6 +87,12 @@ export class Sistema_Caracteristicas_Controller {
         });
         return res.status(200).send({ message: 'Datos del sistema actualizados correctamente' });
         //error
+    }
+
+    public routes() {
+        this.router.get('/sistema', this.getSistema);
+        this.router.post('/sistema', this.addSistema);
+        this.router.put('/sistema/:id', this.updateSistema);
     }
 }
 

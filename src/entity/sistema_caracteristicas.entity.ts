@@ -4,39 +4,39 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, OneT
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({unique:true})
     sistema: string    
     
-    @Column()
+    @Column({nullable:true})
     siglas: string
 
-    @Column()
+    @Column({length:2000})
     descripcion: string
 
     @Column()
     desarrollador: string
 
-    @Column()
+    @Column({nullable:true})
     lenguaje_programacion: string
 
-    @Column()
+    @Column({nullable:true})
     tipo: string
 
-    @Column()
-    url: number
+    @Column({nullable:true})
+    url: string
 
-    @Column()
+    @Column({nullable:true})
     servidor_aplicacion: string
 
-    @Column()
+    @Column({nullable:true})
     base_datos: string
 
-    @Column()
+    @Column({nullable:true})
     servidor_base_datos: string
 
-    @Column()
+    @Column({nullable:true})
     areas_usuarias: string
 
-    @Column()
+    @Column({nullable:true})
     administrador: string
 }
