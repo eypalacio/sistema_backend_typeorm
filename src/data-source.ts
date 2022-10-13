@@ -6,6 +6,7 @@ import { Sistema_Usuarios } from "./entity/sistema_usuarios.entity";
 import { Token } from "./entity/token.entity";
 import { Usuario } from "./entity/usuario.entity";
 import { VideoConferencia } from "./entity/videoconferencia.entity";
+require('dotenv').config({path:'./.env'})
 
 export const AppDataSource = new DataSource({
     type: "mssql",
