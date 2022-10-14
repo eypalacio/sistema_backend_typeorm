@@ -30,6 +30,6 @@ export class Sistema_Usuarios_Controller {
      * routes url para la llamada al api
      */
     public routes() {
-        this.router.get('/sistema-ususarios', this.get_usuarios)
+        this.router.get('/ususarios', this.get_usuarios)
     }
 }

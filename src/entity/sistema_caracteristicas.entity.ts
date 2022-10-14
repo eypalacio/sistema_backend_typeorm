@@ -32,6 +32,9 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, OneT
     base_datos: string
 
     @Column({nullable:true})
+    tipo_db: string
+
+    @Column({nullable:true})
     servidor_base_datos: string
 
     @Column({nullable:true})
@@ -39,4 +42,7 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, OneT
 
     @Column({nullable:true})
     administrador: string
+
+    @Column({nullable:true})
+    soporte: string
 }

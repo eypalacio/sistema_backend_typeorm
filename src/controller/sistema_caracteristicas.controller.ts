@@ -19,7 +19,7 @@ export class Sistema_Caracteristicas_Controller {
     public get_sistema = async (req: Request, res: Response) => {
         const result: any = await AppDataSource.manager.find(Sistema_Caracteristicas, {
             order: {
-                sistema: "ASC"
+                siglas: "ASC"
             }
         })
         return res.status(200).send(result);
@@ -29,7 +29,7 @@ export class Sistema_Caracteristicas_Controller {
      * addSistema api para annadir un nuevo sistema
      */
     public add_sistema = async (req: Request, res: Response) => {
-        const sistema = req.body.nombre;
+        const sistema = req.body.sistema;
         const siglas = req.body.siglas;
         const descripcion = req.body.descripcion;
         const desarrollador = req.body.desarrollador;
@@ -38,8 +38,11 @@ export class Sistema_Caracteristicas_Controller {
         const url = req.body.url;
         const server_app = req.body.servidor_aplicacion;
         const base_datos = req.body.base_datos;
+        const tipo_db = req.body.tipo_db;
         const server_db = req.body.servidor_base_datos;
         const admin = req.body.administrador;
+        const areas_usuarias = req.body.areas_usuarias;
+        const soporte = req.body.soporte;
 
         const sc = new Sistema_Caracteristicas()
         sc.sistema = sistema;
@@ -51,9 +54,12 @@ export class Sistema_Caracteristicas_Controller {
         sc.url = url;
         sc.servidor_aplicacion = server_app;
         sc.base_datos = base_datos;
+        sc.tipo_db = tipo_db;
         sc.servidor_base_datos = server_db;
         sc.administrador = admin;
-        await AppDataSource.manager.save(Sistema_Caracteristicas, sc);
+        sc.areas_usuarias = areas_usuarias;
+        sc.soporte = soporte,
+            await AppDataSource.manager.save(Sistema_Caracteristicas, sc);
         return res.status(200).send({ message: 'Nuevo sistema agregado correctamente' });
         //error
     }
@@ -62,7 +68,9 @@ export class Sistema_Caracteristicas_Controller {
      * updateSistema api para atualizar los datos del sistema
      */
     public update_sistema = async (req: Request, res: Response) => {
-        const sistema = req.body.nombre;
+        console.log(req.body);
+
+        const sistema = req.body.sistema;
         const siglas = req.body.siglas;
         const descripcion = req.body.descripcion;
         const desarrollador = req.body.desarrollador;
@@ -73,6 +81,8 @@ export class Sistema_Caracteristicas_Controller {
         const base_datos = req.body.base_datos;
         const server_db = req.body.servidor_base_datos;
         const admin = req.body.administrador;
+        const tipo_db = req.body.tipo_db;
+        const soporte = req.body.soporte;
 
         await AppDataSource.manager.update(Sistema_Caracteristicas, req.params.id, {
             sistema: sistema,
@@ -84,8 +94,10 @@ export class Sistema_Caracteristicas_Controller {
             url: url,
             servidor_aplicacion: server_app,
             base_datos: base_datos,
+            tipo_db: tipo_db,
             servidor_base_datos: server_db,
             administrador: admin,
+            soporte: soporte,
         });
         return res.status(200).send({ message: 'Datos del sistema actualizados correctamente' });
         //error
@@ -95,10 +107,10 @@ export class Sistema_Caracteristicas_Controller {
      * routes url para las llamadas a las apis
      */
     public routes() {
-        this.router.get('/sistema-caracteristica', this.get_sistema);
-        this.router.post('/sistema-caracteristica', this.add_sistema);
-        this.router.put('/sistema-caracteristica',this.update_sistema);
+        this.router.get('/sistema', this.get_sistema);
+        this.router.post('/sistema', this.add_sistema);
+        this.router.put('/sistema/:id', this.update_sistema);
     }
-    
+
 }
 
