@@ -4,21 +4,21 @@ import { Entity, PrimaryGeneratedColumn, Column, } from "typeorm";
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
+    @Column({nullable:true})
     nombre_sistema: string
 
-    @Column()
+    @Column({nullable:true})
     siglas: string
 
-    @Column()
+    @Column({nullable:true})
     nombre_usuario: string
 
-    @Column()
+    @Column({nullable:true})
     usuario: string
 
-    @Column()
+    @Column({nullable:true})
     area: string
 
-    @Column()
+    @Column({nullable:true})
     activo: string
 }

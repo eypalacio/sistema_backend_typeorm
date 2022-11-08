@@ -19,7 +19,7 @@ export class Sistema_Caracteristicas_Controller {
     public get_sistema = async (req: Request, res: Response) => {
         const result: any = await AppDataSource.manager.find(Sistema_Caracteristicas, {
             order: {
-                siglas: "ASC"
+                sistema: "ASC"
             }
         })
         return res.status(200).send(result);
