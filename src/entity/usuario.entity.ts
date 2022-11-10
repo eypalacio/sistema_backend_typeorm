@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne } from "typeorm"
+import { Rol } from "./rol.entity"
 
 @Entity()
 export class Usuario {
@@ -15,19 +16,13 @@ export class Usuario {
     @Column()
     nombre: string
 
-    @Column()
-    correo: string
-
     @CreateDateColumn()
     fecha_registro: Date
 
     @CreateDateColumn()
     ultima_sesion: Date
 
-    @Column()
-    rol: string
-
-    @Column()
-    piso: number
+    @ManyToOne(type => Rol, {nullable:true})
+    rol: number
 
 }

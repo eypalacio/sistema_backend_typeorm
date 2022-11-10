@@ -1,6 +1,7 @@
 import "reflect-metadata"
 import { DataSource } from "typeorm"
 import { Busquedas_Recientes } from "./entity/busquedas_recientes.entity";
+import { Rol } from "./entity/rol.entity";
 import { Sistema_Caracteristicas } from "./entity/sistema_caracteristicas.entity";
 import { Sistema_Usuarios } from "./entity/sistema_usuarios.entity";
 import { Token } from "./entity/token.entity";
@@ -18,7 +19,7 @@ export const AppDataSource = new DataSource({
     synchronize: true,
     options: { encrypt: false },
     logging: false,
-    entities: [Usuario, Busquedas_Recientes, Token, Sistema_Caracteristicas, Sistema_Usuarios],
+    entities: [Usuario, Busquedas_Recientes, Token, Sistema_Caracteristicas, Sistema_Usuarios, Rol],
     migrations: [],
     subscribers: [],
 })

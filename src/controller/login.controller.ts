@@ -43,7 +43,7 @@ export class LoginController {
   private generateToken(usuario: string): string {
     let token = "";
     for (var i = 0; i < usuario.length; i++) {
-      token += usuario[i] + this.getRandomInt(0, 10);
+      token += usuario[i] + this.getRandomInt(0, 100);
       if (i != usuario.length - 1) {
         token += "-";
       }

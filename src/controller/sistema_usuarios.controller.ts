@@ -22,7 +22,7 @@ export class Sistema_Usuarios_Controller {
         const result: any = await AppDataSource.manager.find(Sistema_Usuarios, {
             order:{
                 nombre_sistema: "ASC"
-            }
+            },
         })
     }
 

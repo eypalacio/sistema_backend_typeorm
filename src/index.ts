@@ -1,8 +1,9 @@
 import { Busquedas_Recientes_Controller } from "./controller/busquedas_recientes.controller";
 import { LoginController } from "./controller/login.controller";
+import { Rol_Controller } from "./controller/rol.controller";
 import { Sistema_Caracteristicas_Controller } from "./controller/sistema_caracteristicas.controller";
 import { Sistema_Usuarios_Controller } from "./controller/sistema_usuarios.controller";
-import { UsuarioController } from "./controller/usuario.controller";
+import { Usuario_Controller } from "./controller/usuario.controller";
 import { VideoConferenciaController } from "./controller/videoconferencia.controller";
 import { AppDataSource } from "./data-source"
 import { Sistema_Caracteristicas } from "./entity/sistema_caracteristicas.entity";
@@ -38,6 +39,10 @@ AppDataSource.initialize().then(async () => {
     const usuario_controller = new Sistema_Usuarios_Controller();
     const caracteristicas_controller = new Sistema_Caracteristicas_Controller();
     const busq_rec_controller = new Busquedas_Recientes_Controller();
+    const user_controller = new Usuario_Controller();
+    const login_controller = new LoginController();
+    const rol_controller = new Rol_Controller();
+    
 
     /**Cargar las rutas de las apis */
     /** guide:
@@ -49,6 +54,9 @@ AppDataSource.initialize().then(async () => {
     app.use('/apis', usuario_controller.router);
     app.use('/apis', caracteristicas_controller.router);
     app.use('/apis', busq_rec_controller.router);
+    app.use('/apis', user_controller.router);
+    app.use('/apis', login_controller.router);
+    app.use('/apis', rol_controller.router);
     app.get('/apis', function (req, res) {
         console.log('sss');
 
