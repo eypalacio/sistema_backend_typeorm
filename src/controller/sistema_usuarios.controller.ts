@@ -24,12 +24,13 @@ export class Sistema_Usuarios_Controller {
                 nombre_sistema: "ASC"
             },
         })
+        return res.status(200).send(result);
     }
 
     /**
      * routes url para la llamada al api
      */
     public routes() {
-        this.router.get('/ususarios', this.get_usuarios)
+        this.router.get('/usuarios', this.get_usuarios)
     }
 }
