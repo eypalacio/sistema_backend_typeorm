@@ -27,7 +27,4 @@ export class Usuario {
     @Column()
     rol: string
 
-    @Column()
-    piso: number
-
 }
