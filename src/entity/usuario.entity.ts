@@ -22,7 +22,7 @@ export class Usuario {
     @CreateDateColumn()
     ultima_sesion: Date
 
-    @ManyToOne(type => Rol, {nullable:true})
-    rol: number
+    @Column()
+    rol: string
 
 }

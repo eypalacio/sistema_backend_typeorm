@@ -21,7 +21,7 @@ export class Sistema_Usuarios_Controller {
     public get_usuarios = async(req: Request, res: Response) => {
         const result: any = await AppDataSource.manager.find(Sistema_Usuarios, {
             order:{
-                nombre_sistema: "ASC"
+                sistema: "ASC"
             },
         })
         return res.status(200).send(result);
